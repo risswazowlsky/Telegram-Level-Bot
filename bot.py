@@ -69,10 +69,10 @@ async def levelsystem(_, message):
     is_level = toggle.find_one({"chat_id": message.chat.id})
     if not is_level:
         toggle.insert_one({"chat_id": message.chat.id})
-        await message.reply_text("Level System Enable")
+        await message.reply_text("*_✅ Level System Aktif_*")
     else:
         toggle.delete_one({"chat_id": message.chat.id})
-        await message.reply_text("Level System Disable")
+        await message.reply_text("*_❎ Level System Non Aktif_*")
 
 
 @bot.on_message(
@@ -114,12 +114,12 @@ async def level(client, message):
                     l += 1
                 xp -= ((50*((l-1)**2))+(50*(l-1)))
                 if xp == 0:
-                    await message.reply_text(f"🌟 {message.from_user.mention}, You have reached level {l}**, Nothing can stop you on your way!")
+                    await message.reply_text(f"⚡ {message.from_user.mention}, Kamu sudah mencapai batas! {l}**, Tidak ada yang bisa mengalahkan mu!")
     
                     for lv in range(len(levelname)) and range(len(levellink)):
                             if l == levelnum[lv]:            
                                 Link = f"{levellink[lv]}"
-                                await message.reply_video(video=Link, caption=f"{message.from_user.mention}, You have reached Rank Name **{levelname[lv]}**")
+                                await message.reply_video(video=Link, caption=f"{message.from_user.mention}, Kamu Mencapai Rank **{levelname[lv]}**")
                   
 
                                
@@ -152,7 +152,7 @@ async def rank(client, message):
             r += 1
             if xpnum["level"] == k["level"]:
                 break                     
-        await message.reply_text(f"{message.from_user.mention} Level Info:\nLevel: {l}\nProgess: {xp}/{int(200 *((1/2) * l))}\n Ranking: {r}")
+        await message.reply_text(f"{message.from_user.mention} ⚡Profile:\nLevel: {l}\n📜Pencapian: {xp}/{int(200 *((1/2) * l))}\n 🆕Ranking: {r}")
 
 
 
