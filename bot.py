@@ -45,7 +45,7 @@ async def is_admins(chat_id: int):
     ]
 
 levellink =["https://telegra.ph/file/6620fe683ff3989268c7f.mp4", "https://telegra.ph/file/c6bbce91cb75d4ab318ae.mp4", "https://telegra.ph/file/c2ac7b63d248f49da952c.mp4", "https://telegra.ph/file/b100466a5f0c42fa7255f.mp4", "https://telegra.ph/file/67c9dc7b59f78aa7aaf4c.mp4", "https://telegra.ph/file/06e2d74343e89c9d3cd12.mp4", "https://telegra.ph/file/88458a18eea8e86292b14.mp4", "https://telegra.ph/file/e3786d4f321ff4335a70f.mp4"]
-levelname = ["Pendiem", "", "Penggangguran", "Sok Sibuk", "Si Paling Pansos", "Tukang Ghosting", "The Best", "King of Rank"]
+levelname = ["Rajin", "Bucin", "Penggangguran", "Sok Sibuk", "Si paling aktif", "Tukang Ghosting", "The Best", "King of Rank"]
 levelnum = [2,5,15,25,35,50,70,100,125,150,175,200,300,500,700,800,1000]
 
 
@@ -104,7 +104,7 @@ async def level(client, message):
                 level.insert_one(newxp)   
                     
             else:
-                xp = xpnum["xp"] + 10
+                xp = xpnum["xp"] + 1
                 level.update_one({"level": user_id, "chatid": chat}, {
                     "$set": {"xp": xp}})
                 l = 0
@@ -114,12 +114,12 @@ async def level(client, message):
                     l += 1
                 xp -= ((50*((l-1)**2))+(50*(l-1)))
                 if xp == 0:
-                    await message.reply_text(f"⚡ {message.from_user.mention}, Kamu sudah mencapai batas! {l}**, Tidak ada yang bisa mengalahkan mu!")
+                    await message.reply_text(f"⚡ {message.from_user.mention}, Mencapai Rank {l}**, Lu Paling Rajin Banget!")
     
                     for lv in range(len(levelname)) and range(len(levellink)):
                             if l == levelnum[lv]:            
                                 Link = f"{levellink[lv]}"
-                                await message.reply_video(video=Link, caption=f"{message.from_user.mention}, Kamu Mencapai Rank **{levelname[lv]}**")
+                                await message.reply_video(video=Link, caption=f"{message.from_user.mention}, Mencapai Rank **{levelname[lv]}**")
                   
 
                                
