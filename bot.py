@@ -69,10 +69,10 @@ async def levelsystem(_, message):
     is_level = toggle.find_one({"chat_id": message.chat.id})
     if not is_level:
         toggle.insert_one({"chat_id": message.chat.id})
-        await message.reply_text("*_✅ Level System Aktif_*")
+        await message.reply_text("✅ Level System Aktif")
     else:
         toggle.delete_one({"chat_id": message.chat.id})
-        await message.reply_text("*_❎ Level System Non Aktif_*")
+        await message.reply_text("❎ Level System Dimatikan")
 
 
 @bot.on_message(
@@ -152,7 +152,7 @@ async def rank(client, message):
             r += 1
             if xpnum["level"] == k["level"]:
                 break                     
-        await message.reply_text(f"{message.from_user.mention} ⚡Profile:\nLevel: {l}\n📜Pencapian: {xp}/{int(200 *((1/2) * l))}\n 🆕Ranking: {r}")
+        await message.reply_text(f"About {message.from_user.mention}:\nLevel: {l}\n Pencapaian: {xp}/{int(200 *((1/2) * l))}\n Rank in Groups: {r}\n\n 💡 *Untuk mendapatkan Exp/Pencapaian Kamu Harus Aktif Mengobrol Dalam Groups.*")
 
 
 
